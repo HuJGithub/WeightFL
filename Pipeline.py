@@ -6,7 +6,7 @@ from data_process.data_systhesis.resampling import ResamplingData
 from data_process.data_systhesis.borderline_smote import Borderlinesmote
 from data_process.data_systhesis.smote import SMOTEData
 from data_process.data_systhesis.mixup import MixUp
-from data_process.data_systhesis.IDF import IDF
+from data_process.data_systhesis.TRM import TRM
 from data_process.data_systhesis.cvae_synthesis import CVAESynthesisData
 from data_process.dimensional_reduciton.PCA import PCAData
 from read_data.ExampleDataLoader import ExampleDataLoader
@@ -102,10 +102,10 @@ class Pipeline:
             self.data_obj.process()
             self.data_obj = MixUp(self.data_obj)
             self.data_obj.process()
-        elif self.experiment == "slice_idf":
+        elif self.experiment == "slice_trm":
             self.data_obj = Slice(self.dataloader)
             self.data_obj.process()
-            self.data_obj = IDF(self.data_obj)
+            self.data_obj = TRM(self.data_obj)
             self.data_obj.process()
         elif self.experiment == "cvae":
             self.data_obj = CVAESynthesisData(self.dataloader)
