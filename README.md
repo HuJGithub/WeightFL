@@ -1,2 +1,2 @@
 # WeightFL
-This code is for the paper titled "Weight Optimization of the Coverage Matrix for Fault Localization".
+This code is for the paper: Weight Optimization of the Coverage Matrix for Fault Localization.
