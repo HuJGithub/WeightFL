@@ -4,7 +4,7 @@ import random
 from data_process.ProcessedData import ProcessedData
 
 
-class TRM(ProcessedData):
+class SFITF(ProcessedData):
 
     def __init__(self, raw_data):
         super().__init__(raw_data)
@@ -12,17 +12,19 @@ class TRM(ProcessedData):
 
 
     def process(self):
-        DF = self.feature_df.sum(axis=0)
+        DF = 1/self.feature_df.sum(axis=0)
         print(DF)
 
-        N = len(self.feature_df)
+        M = len(self.feature_df)
         print(N)
 
-        TRM = np.log(N / (DF))/DF**0.5
-        print(TRM)
+        ITF = np.log(M/self.feature_df.sum(axis=1))
+        print(SFITF)
+
+        SFITF=DF*ITF
        
         for col in self.feature_df.columns:
-            self.feature_df[col] *= TRM[col]
+            self.feature_df[col] *= SFITF[col]
 
         
         print(self.feature_df)
